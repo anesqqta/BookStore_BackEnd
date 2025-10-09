@@ -1,2 +1,2 @@
-# GamingPlatform_BackEnd
-Backend for Gaming Platform project
+# BookStore_BackEnd
+Backend for Book Store project

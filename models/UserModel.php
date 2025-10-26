@@ -36,5 +36,13 @@ class UserModel {
         $stmt->bind_param("sss", $name, $email, $passHash);
         return $stmt->execute();
     }
+
+    public function getUserById($user_id) {
+    $stmt = $this->conn->prepare("SELECT * FROM users WHERE id = ?");
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result->num_rows > 0 ? $result->fetch_assoc() : null;
+}
 }
 ?>

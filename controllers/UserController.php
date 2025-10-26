@@ -47,5 +47,23 @@ class UserController {
             return ['status' => 'error', 'message' => 'Помилка при реєстрації!'];
         }
     }
+
+    public function getUserById($user_id) {
+    return $this->userModel->getUserById($user_id);
+}
+
+    // Вихід користувача
+    public function logout() {
+        session_start();
+
+        // Очистити всі дані сесії
+        $_SESSION = [];
+        session_unset();
+        session_destroy();
+
+        // Перенаправлення на сторінку входу
+        header('Location: ../../BookStore_FrontEnd/view/login.php');
+        exit;
+    }
 }
 ?>

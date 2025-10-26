@@ -14,5 +14,8 @@ class OrderController {
     public function placeOrder($data) {
         return $this->orderModel->createOrder($data);
     }
+    public function getUserOrders($user_id) {
+        return $this->orderModel->fetchOrdersByUser($user_id);
+    }
 }
 ?>

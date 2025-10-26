@@ -30,5 +30,11 @@ class OrderModel {
             return "Помилка при створенні замовлення: " . $stmt->error;
         }
     }
+    public function fetchOrdersByUser($user_id) {
+        $stmt = $this->conn->prepare("SELECT * FROM orders WHERE user_id = ? ORDER BY id DESC");
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+        return $stmt->get_result();
+    }
 }
 ?>

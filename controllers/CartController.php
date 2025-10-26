@@ -28,5 +28,18 @@ class CartController {
     public function addToCart($user_id, $book) {
         return $this->cartModel->addToCart($user_id, $book);
     }
+
+    public function getUserCart($user_id) {
+    $stmt = $this->conn->prepare("SELECT * FROM cart WHERE user_id = ?");
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    return $stmt->get_result();
+}
+
+public function clearCart($user_id) {
+    $stmt = $this->conn->prepare("DELETE FROM cart WHERE user_id = ?");
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+}
 }
 ?>

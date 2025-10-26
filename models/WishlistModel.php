@@ -39,6 +39,24 @@ class WishlistModel {
             return "Помилка при додаванні";
         }
     }
+    public function getUserWishlist($user_id) {
+        $stmt = $this->conn->prepare("SELECT * FROM wishlist WHERE user_id = ?");
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+        return $stmt->get_result();
+    }
+
+    public function deleteFromWishlist($wishlist_id) {
+        $stmt = $this->conn->prepare("DELETE FROM wishlist WHERE id = ?");
+        $stmt->bind_param("i", $wishlist_id);
+        return $stmt->execute();
+    }
+
+    public function clearWishlist($user_id) {
+        $stmt = $this->conn->prepare("DELETE FROM wishlist WHERE user_id = ?");
+        $stmt->bind_param("i", $user_id);
+        return $stmt->execute();
+    }
 }
 
 ?>

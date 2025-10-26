@@ -51,5 +51,15 @@ class BookModel {
         $result = mysqli_query($this->conn, $query);
         return $result;
     }
+
+    public function getBookById($book_id) {
+        $query = "SELECT * FROM {$this->table} WHERE id = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bind_param("i", $book_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
+    }
+
 }
 ?>

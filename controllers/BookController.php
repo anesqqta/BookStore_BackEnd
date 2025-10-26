@@ -19,5 +19,10 @@ class BookController {
     public function getBooks($filters = []) {
         return $this->bookModel->getFilteredBooks($filters);
     }
+
+
+    public function getBookById($book_id) {
+        return $this->bookModel->getBookById($book_id);
+    }
 }
 ?>

@@ -14,4 +14,8 @@ class WishlistController {
     public function getWishlistCount($user_id) {
         return $this->wishlistModel->getWishlistCount($user_id);
     }
+
+     public function addToWishlist($user_id, $book) {
+        return $this->wishlistModel->addToWishlist($user_id, $book);
+    }
 }

@@ -14,5 +14,10 @@ class BookController {
     public function getLatestBooks($limit = 6) {
         return $this->bookModel->fetchLatestBooks($limit);
     }
+
+
+    public function getBooks($filters = []) {
+        return $this->bookModel->getFilteredBooks($filters);
+    }
 }
 ?>

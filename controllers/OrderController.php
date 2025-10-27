@@ -10,7 +10,6 @@ class OrderController {
         $db = $database->getConnection();
         $this->orderModel = new OrderModel($db);
     }
-
     public function placeOrder($data) {
         return $this->orderModel->createOrder($data);
     }

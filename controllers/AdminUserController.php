@@ -11,11 +11,9 @@ class AdminUserController {
         $this->conn = $database->getConnection();
         $this->userModel = new UserModel($this->conn);
     }
-
     public function getUsers() {
         return $this->userModel->getAllUsers();
     }
-
     public function deleteUser($id) {
         return $this->userModel->deleteUser($id);
     }

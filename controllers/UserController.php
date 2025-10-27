@@ -10,10 +10,8 @@ class UserController {
         $db = $database->getConnection();
         $this->userModel = new UserModel($db);
     }
-
     public function loginUser($email, $password) {
         $user = $this->userModel->getUserByEmailAndPassword($email, $password);
-
         if ($user) {
             return [
                 'status' => 'success',
@@ -29,7 +27,6 @@ class UserController {
             ];
         }
     }
-
     public function registerUser($name, $email, $pass, $cpass) {
         if ($pass !== $cpass) {
             return ['status' => 'error', 'message' => 'Паролі не співпадають!'];
@@ -47,25 +44,17 @@ class UserController {
             return ['status' => 'error', 'message' => 'Помилка при реєстрації!'];
         }
     }
-
     public function getUserById($user_id) {
-    return $this->userModel->getUserById($user_id);
-}
-
+        return $this->userModel->getUserById($user_id);
+    }
      public function updateProfile($id, $data) {
         return $this->userModel->updateUser($id, $data);
     }
-
-    // Вихід користувача
     public function logout() {
         session_start();
-
-        // Очистити всі дані сесії
         $_SESSION = [];
         session_unset();
         session_destroy();
-
-        // Перенаправлення на сторінку входу
         header('Location: ../../BookStore_FrontEnd/view/login.php');
         exit;
     }

@@ -11,11 +11,9 @@ class AdminContactController {
         $this->conn = $database->getConnection();
         $this->messageModel = new MessageModel($this->conn);
     }
-
     public function getMessages() {
         return $this->messageModel->getAllMessages();
     }
-
     public function deleteMessage($id) {
         return $this->messageModel->deleteMessage($id);
     }

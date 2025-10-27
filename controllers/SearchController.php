@@ -10,7 +10,6 @@ class SearchController {
         $conn = $database->getConnection();
         $this->productModel = new ProductModel($conn);
     }
-
     public function searchProducts($query) {
         return $this->productModel->searchProducts($query);
     }

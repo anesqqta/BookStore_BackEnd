@@ -45,11 +45,26 @@ class UserModel {
     return $result->num_rows > 0 ? $result->fetch_assoc() : null;
 }
 
+    public function updateUser($id, $data) {
+        $name = mysqli_real_escape_string($this->conn, $data['name']);
+        $email = mysqli_real_escape_string($this->conn, $data['email']);
+        
+        $stmt = $this->conn->prepare("UPDATE users SET name=?, email=? WHERE id=?");
+        $stmt->bind_param("ssi", $name, $email, $id);
+
+        if ($stmt->execute()) {
+            return "Профіль успішно оновлено!";
+        } else {
+            return "Помилка при оновленні профілю!";
+        }
+    }
+
         // Отримати всіх користувачів
     public function getAllUsers() {
         $query = "SELECT * FROM users ORDER BY id DESC";
         return mysqli_query($this->conn, $query);
     }
+
 
     // Видалити користувача
     public function deleteUser($id) {

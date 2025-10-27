@@ -52,6 +52,10 @@ class UserController {
     return $this->userModel->getUserById($user_id);
 }
 
+     public function updateProfile($id, $data) {
+        return $this->userModel->updateUser($id, $data);
+    }
+
     // Вихід користувача
     public function logout() {
         session_start();

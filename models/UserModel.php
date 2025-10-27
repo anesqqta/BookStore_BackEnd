@@ -44,5 +44,17 @@ class UserModel {
     $result = $stmt->get_result();
     return $result->num_rows > 0 ? $result->fetch_assoc() : null;
 }
+
+        // Отримати всіх користувачів
+    public function getAllUsers() {
+        $query = "SELECT * FROM users ORDER BY id DESC";
+        return mysqli_query($this->conn, $query);
+    }
+
+    // Видалити користувача
+    public function deleteUser($id) {
+        $query = "DELETE FROM users WHERE id = '$id'";
+        return mysqli_query($this->conn, $query);
+    }
 }
 ?>

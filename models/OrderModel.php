@@ -36,5 +36,23 @@ class OrderModel {
         $stmt->execute();
         return $stmt->get_result();
     }
+
+        // Отримати всі замовлення
+    public function getAllOrders() {
+        $query = "SELECT * FROM orders ORDER BY placed_on DESC";
+        return mysqli_query($this->conn, $query);
+    }
+
+    // Оновити статус оплати
+    public function updatePaymentStatus($order_id, $status) {
+        $query = "UPDATE orders SET payment_status = '$status' WHERE id = '$order_id'";
+        return mysqli_query($this->conn, $query);
+    }
+
+    // Видалити замовлення
+    public function deleteOrder($order_id) {
+        $query = "DELETE FROM orders WHERE id = '$order_id'";
+        return mysqli_query($this->conn, $query);
+    }
 }
 ?>

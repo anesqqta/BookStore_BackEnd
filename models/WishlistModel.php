@@ -5,8 +5,6 @@ class WishlistModel {
     public function __construct($conn) {
         $this->conn = $conn;
     }
-
-    // Отримати кількість товарів у списку бажаного
     public function getWishlistCount($user_id) {
         $stmt = $this->conn->prepare("SELECT COUNT(*) as count FROM wishlist WHERE user_id = ?");
         $stmt->bind_param("i", $user_id);
@@ -14,7 +12,6 @@ class WishlistModel {
         $result = $stmt->get_result()->fetch_assoc();
         return $result['count'] ?? 0;
     }
-
     public function addToWishlist($user_id, $book) {
         $product_id = $book['product_id'];
         $name = mysqli_real_escape_string($this->conn, $book['product_name']);
@@ -25,14 +22,11 @@ class WishlistModel {
         $check->bind_param("ii", $product_id, $user_id);
         $check->execute();
         $res = $check->get_result();
-
         if ($res->num_rows > 0) {
             return "Товар вже у списку бажаного";
         }
-
         $stmt = $this->conn->prepare("INSERT INTO wishlist (user_id, book_id, name, price, image) VALUES (?, ?, ?, ?, ?)");
         $stmt->bind_param("iisss", $user_id, $product_id, $name, $price, $image);
-
         if ($stmt->execute()) {
             return "Товар додано до списку бажаного";
         } else {
@@ -45,18 +39,15 @@ class WishlistModel {
         $stmt->execute();
         return $stmt->get_result();
     }
-
     public function deleteFromWishlist($wishlist_id) {
         $stmt = $this->conn->prepare("DELETE FROM wishlist WHERE id = ?");
         $stmt->bind_param("i", $wishlist_id);
         return $stmt->execute();
     }
-
     public function clearWishlist($user_id) {
         $stmt = $this->conn->prepare("DELETE FROM wishlist WHERE user_id = ?");
         $stmt->bind_param("i", $user_id);
         return $stmt->execute();
     }
 }
-
 ?>

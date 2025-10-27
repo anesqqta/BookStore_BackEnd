@@ -10,7 +10,6 @@ class AdminDashboardController {
         $conn = $db->getConnection();
         $this->model = new AdminDashboardModel($conn);
     }
-
     public function getDashboardData() {
         return [
             'pendingTotal' => $this->model->getPendingTotal(),

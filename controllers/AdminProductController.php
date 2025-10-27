@@ -22,5 +22,13 @@ class AdminProductController {
     public function getProducts() {
         return $this->model->getAllProducts();
     }
+
+    public function getProductById($id) {
+        return $this->model->getProductById($id);
+    }
+
+    public function updateProduct($data, $files) {
+        return $this->model->updateProduct($data, $files);
+    }
 }
 ?>

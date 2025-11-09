@@ -31,12 +31,10 @@ class UserController {
         if ($pass !== $cpass) {
             return ['status' => 'error', 'message' => 'Паролі не співпадають!'];
         }
-
         $exists = $this->userModel->checkUserExists($email);
         if ($exists) {
             return ['status' => 'error', 'message' => 'Користувач вже існує!'];
         }
-
         $result = $this->userModel->createUser($name, $email, $pass);
         if ($result) {
             return ['status' => 'success', 'message' => 'Реєстрація успішна!'];

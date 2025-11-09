@@ -4,7 +4,6 @@ require_once __DIR__ . '/../models/AdminDashboardModel.php';
 
 class AdminDashboardController {
     private $model;
-
     public function __construct() {
         $db = new Database();
         $conn = $db->getConnection();

@@ -4,7 +4,6 @@ require_once __DIR__ . '/../config/Database.php';
 
 class OrderController {
     private $orderModel;
-
     public function __construct() {
         $database = new Database();
         $db = $database->getConnection();

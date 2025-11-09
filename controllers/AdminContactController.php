@@ -5,7 +5,6 @@ require_once __DIR__ . '/../models/MessageModel.php';
 class AdminContactController {
     private $conn;
     private $messageModel;
-
     public function __construct() {
         $database = new Database();
         $this->conn = $database->getConnection();

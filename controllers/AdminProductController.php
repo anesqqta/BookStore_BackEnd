@@ -1,10 +1,8 @@
 <?php
 require_once __DIR__ . '/../config/Database.php';
 require_once __DIR__ . '/../models/ProductModel.php';
-
 class AdminProductController {
     private $model;
-
     public function __construct() {
         $db = new Database();
         $conn = $db->getConnection();

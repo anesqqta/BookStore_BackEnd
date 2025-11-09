@@ -5,7 +5,6 @@ require_once __DIR__ . '/../models/CartModel.php';
 class CartController {
     private $conn;
     private $cartModel;
-
     public function __construct() {
         $database = new Database();
         $this->conn = $database->getConnection();

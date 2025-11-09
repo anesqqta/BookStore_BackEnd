@@ -3,7 +3,6 @@ require_once __DIR__ . '/../models/ContactModel.php';
 
 class ContactController {
     private $model;
-
     public function __construct() {
         $this->model = new ContactModel();
     }

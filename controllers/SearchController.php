@@ -4,7 +4,6 @@ require_once __DIR__ . '/../models/ProductModel.php';
 
 class SearchController {
     private $productModel;
-
     public function __construct() {
         $database = new Database();
         $conn = $database->getConnection();

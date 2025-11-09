@@ -4,7 +4,6 @@ require_once __DIR__ . '/../models/WishlistModel.php';
 
 class WishlistController {
     private $wishlistModel;
-
     public function __construct() {
         $database = new Database();
         $conn = $database->getConnection();

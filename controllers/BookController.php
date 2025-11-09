@@ -4,7 +4,6 @@ require_once __DIR__ . '/../models/BookModel.php';
 
 class BookController {
     private $bookModel;
-
     public function __construct() {
         $database = new Database();
         $db = $database->getConnection();
